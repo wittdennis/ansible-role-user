@@ -1,0 +1,4 @@
+---
+user__shell: "/bin/bash"
+user__allow_sudo_superuser: false
+user__comment: ""

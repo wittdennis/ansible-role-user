@@ -1,0 +1,47 @@
+---
+- name: Ensure login is defined
+  ansible.builtin.assert:
+    that:
+      - user__login is defined
+      - user__login | length > 0
+      - user__login != None
+    fail_msg: "user__login needs to be set in order for this role to work"
+
+- name: Ensure password_hash is defined
+  ansible.builtin.assert:
+    that:
+      - user__password_hash is defined
+      - user__password_hash | length > 0
+      - user__password_hash != None
+    fail_msg: "user__password_hash needs to be set in order for this role to work"
+
+- name: Ensure public_key_file is defined
+  ansible.builtin.assert:
+    that:
+      - user__public_key_file is defined
+      - user__public_key_file | length > 0
+      - user__public_key_file != None
+    fail_msg: "user__public_key_file needs to be set in order for this role to work"
+
+- name: Add user
+  ansible.builtin.user:
+    name: "{{ user__login }}"
+    comment: "{{ user__comment }}"
+    password: "{{ user__password_hash }}"
+    update_password: on_create
+    shell: "{{ user__shell }}"
+
+- name: Add authorized_key
+  ansible.posix.authorized_key:
+    key: "{{ lookup('file', '{{ user__public_key_file }}') }}"
+    user: "{{ user__login }}"
+    state: present
+
+- name: Grant sudo superuser rights
+  community.general.sudoers:
+    name: "{{ user__login }}-superuser"
+    user: "{{ user__login }}"
+    state: present
+    commands: ALL
+    nopassword: false
+  when: user__allow_sudo_superuser | bool
