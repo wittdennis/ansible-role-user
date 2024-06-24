@@ -1,6 +1,7 @@
 galaxy_info:
   author: Dennis Witt
-  description: Ansible role to create a user  
+  description: Ansible role to create a user
+  role_name: user
 
   license: MIT
 
