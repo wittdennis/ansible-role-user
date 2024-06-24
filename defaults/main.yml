@@ -1,4 +1,4 @@
 ---
-user__shell: "/bin/bash"
-user__allow_sudo_superuser: false
-user__comment: ""
+user_shell: "/bin/bash"
+user_allow_sudo_superuser: false
+user_comment: ""
