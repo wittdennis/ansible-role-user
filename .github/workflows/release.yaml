@@ -1,3 +1,5 @@
+name: gihub-release
+
 on:
   push:
     tags: v*.*.*

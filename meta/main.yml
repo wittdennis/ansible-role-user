@@ -2,6 +2,7 @@ galaxy_info:
   author: Dennis Witt
   description: Ansible role to create a user
   role_name: user
+  namespace: wittdennis
 
   license: MIT
 
