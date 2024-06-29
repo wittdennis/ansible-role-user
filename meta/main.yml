@@ -3,6 +3,10 @@ galaxy_info:
   description: Ansible role to create a user
   role_name: user
   namespace: wittdennis
+  platforms:
+    - name: GenericLinux
+      versions:
+        - all
 
   license: MIT
 
