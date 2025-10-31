@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [2.1.1](https://github.com/wittdennis/ansible-role-user/compare/0b5c91703c40fd5ac3f1c6c7915c6cdcdf4a66b1..2.1.1) - 2025-10-31
+#### Bug Fixes
+- doas config syntax - ([0b5c917](https://github.com/wittdennis/ansible-role-user/commit/0b5c91703c40fd5ac3f1c6c7915c6cdcdf4a66b1)) - Dennis Witt
+
+- - -
+
 ## [2.1.0](https://github.com/wittdennis/ansible-role-user/compare/a35851c6c56b65a51ea8c39646e11f22f681c101..2.1.0) - 2025-10-31
 #### Features
 - allow for privilige escalation with doas on alpine - ([abe174c](https://github.com/wittdennis/ansible-role-user/commit/abe174cf9a80875bacada7199bd92149f91a1cb7)) - Dennis Witt
