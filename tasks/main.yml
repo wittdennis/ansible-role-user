@@ -1,3 +1,4 @@
+# code: language=ansible
 ---
 - name: Ensure login is defined
   ansible.builtin.assert:
@@ -33,7 +34,7 @@
 
 - name: Add authorized_key
   ansible.posix.authorized_key:
-    key: "{{ lookup('file', '{{ user_public_key_file }}') }}"
+    key: "{{ lookup('file', user_public_key_file) }}"
     user: "{{ user_login }}"
     state: present
 
@@ -44,4 +45,27 @@
     state: present
     commands: ALL
     nopassword: false
-  when: user_allow_sudo_superuser | bool
+  when: user_allow_sudo_superuser | bool and ansible_facts['distribution'] != 'Alpine'
+
+- name: Ensure doas is present on alpine
+  ansible.builtin.package:
+    name: doas
+    state: present
+  when: user_allow_sudo_superuser | bool and ansible_facts['distribution'] == 'Alpine'
+
+- name: Permit wheel group to use doas
+  ansible.builtin.copy:
+    content: "permit :wheel"
+    dest: /etc/doas.d/doas.conf
+    group: root
+    owner: root
+    mode: u=rw,g=r,o=r
+  when: user_allow_sudo_superuser | bool and ansible_facts['distribution'] == 'Alpine'
+
+- name: Add user to wheel group
+  ansible.builtin.user:
+    name: "{{ user_login }}"
+    groups:
+      - wheel
+    append: true
+  when: user_allow_sudo_superuser | bool and ansible_facts['distribution'] == 'Alpine'
