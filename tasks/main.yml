@@ -55,7 +55,7 @@
 
 - name: Permit wheel group to use doas
   ansible.builtin.copy:
-    content: "permit :wheel"
+    content: permit persist :wheel
     dest: /etc/doas.d/doas.conf
     group: root
     owner: root
