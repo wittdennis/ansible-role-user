@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [2.2.1](https://github.com/wittdennis/ansible-role-user/compare/e7b9f4711a2f43db90af0749589d021439abe0fc..2.2.1) - 2025-11-10
+#### Bug Fixes
+- create home dir for system users - ([e7b9f47](https://github.com/wittdennis/ansible-role-user/commit/e7b9f4711a2f43db90af0749589d021439abe0fc)) - Dennis Witt
+
+- - -
+
 ## [2.2.0](https://github.com/wittdennis/ansible-role-user/compare/d36a1aaf3c115f2e552629070c794a7183bbb7bf..2.2.0) - 2025-11-10
 #### Features
 - add possibility to create system users - ([dd1f3fd](https://github.com/wittdennis/ansible-role-user/commit/dd1f3fd0d5c09b2e4ce6a51a513caa6a89732d3c)) - Dennis Witt
