@@ -49,7 +49,7 @@
   ansible.builtin.user:
     name: "{{ user_login }}"
     comment: "{{ user_comment }}"
-    create_home: false
+    create_home: true
     state: present
     system: true
 
