@@ -9,6 +9,7 @@
     fail_msg: "user_login needs to be set in order for this role to work"
 
 - name: Ensure password_hash is defined
+  when: user_human
   ansible.builtin.assert:
     that:
       - user_password_hash is defined
@@ -17,6 +18,7 @@
     fail_msg: "user_password_hash needs to be set in order for this role to work"
 
 - name: Ensure public_key_file is defined
+  when: user_human
   ansible.builtin.assert:
     that:
       - user_public_key_file is defined
@@ -24,19 +26,32 @@
       - user_public_key_file != None
     fail_msg: "user_public_key_file needs to be set in order for this role to work"
 
-- name: Add user
+- name: Add user (human)
+  when: user_human
   ansible.builtin.user:
     name: "{{ user_login }}"
     comment: "{{ user_comment }}"
     password: "{{ user_password_hash }}"
     update_password: on_create
+    create_home: true
+    state: present
     shell: "{{ user_shell }}"
 
 - name: Add authorized_key
+  when: user_human
   ansible.posix.authorized_key:
     key: "{{ lookup('file', user_public_key_file) }}"
     user: "{{ user_login }}"
     state: present
+
+- name: Add user (system)
+  when: not user_human
+  ansible.builtin.user:
+    name: "{{ user_login }}"
+    comment: "{{ user_comment }}"
+    create_home: false
+    state: present
+    system: true
 
 - name: Grant sudo superuser rights
   community.general.sudoers:
