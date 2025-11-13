@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [2.2.2](https://github.com/wittdennis/ansible-role-user/compare/2d954ebd0a87d9ac25633a9b7463f048e27b853b..2.2.2) - 2025-11-13
+#### Bug Fixes
+- syntax error in doas.conf - ([2d954eb](https://github.com/wittdennis/ansible-role-user/commit/2d954ebd0a87d9ac25633a9b7463f048e27b853b)) - Dennis Witt
+
+- - -
+
 ## [2.2.1](https://github.com/wittdennis/ansible-role-user/compare/e7b9f4711a2f43db90af0749589d021439abe0fc..2.2.1) - 2025-11-10
 #### Bug Fixes
 - create home dir for system users - ([e7b9f47](https://github.com/wittdennis/ansible-role-user/commit/e7b9f4711a2f43db90af0749589d021439abe0fc)) - Dennis Witt
