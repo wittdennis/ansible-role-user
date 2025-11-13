@@ -69,9 +69,10 @@
   when: user_allow_sudo_superuser | bool and ansible_facts['distribution'] == 'Alpine'
 
 - name: Permit wheel group to use doas
-  ansible.builtin.copy:
-    content: permit persist :wheel
-    dest: /etc/doas.d/doas.conf
+  ansible.builtin.lineinfile:
+    line: permit persist :wheel
+    regexp: "^permit persist :wheel"
+    path: /etc/doas.conf
     group: root
     owner: root
     mode: u=rw,g=r,o=r
