@@ -53,6 +53,12 @@
     state: present
     system: true
 
+- name: Ensure sudo is present
+  when: user_allow_sudo_superuser | bool and ansible_facts['distribution'] != 'Alpine'
+  ansible.builtin.package:
+    name: sudo
+    state: present
+
 - name: Grant sudo superuser rights
   community.general.sudoers:
     name: "{{ user_login }}-superuser"
