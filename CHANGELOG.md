@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [2.3.0](https://github.com/wittdennis/ansible-role-user/compare/c56ed6b4e92de3dca6b2c936b408170568a24241..2.3.0) - 2025-11-15
+#### Features
+- ensure that sudo is present on system - ([c56ed6b](https://github.com/wittdennis/ansible-role-user/commit/c56ed6b4e92de3dca6b2c936b408170568a24241)) - Dennis Witt
+
+- - -
+
 ## [2.2.2](https://github.com/wittdennis/ansible-role-user/compare/2d954ebd0a87d9ac25633a9b7463f048e27b853b..2.2.2) - 2025-11-13
 #### Bug Fixes
 - syntax error in doas.conf - ([2d954eb](https://github.com/wittdennis/ansible-role-user/commit/2d954ebd0a87d9ac25633a9b7463f048e27b853b)) - Dennis Witt
