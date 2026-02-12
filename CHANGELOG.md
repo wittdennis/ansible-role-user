@@ -2,6 +2,32 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [2.4.0](https://github.com/wittdennis/ansible-role-user/compare/9e5fb2008c9b8204b4cde4d1e93627d4b05bd92c..2.4.0) - 2026-02-12
+#### Features
+- create primary group for the user - ([7e0e76e](https://github.com/wittdennis/ansible-role-user/commit/7e0e76e194597af4d02f826a295b0eba42c7db13)) - Dennis Witt
+#### Miscellaneous Chores
+- (**deps**) update wittdennis/pipelines action to v1.13.8 - ([a0a5615](https://github.com/wittdennis/ansible-role-user/commit/a0a56157b7d2fc6cc96cf8e59590120bf94acbb4)) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.13.7 - ([1647678](https://github.com/wittdennis/ansible-role-user/commit/1647678a633f6db623520dc10db1f216a8e3a4c0)) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.13.6 - ([c0dc443](https://github.com/wittdennis/ansible-role-user/commit/c0dc44318f0d7117879f71b45c5e662a67bee01a)) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.13.5 - ([9633550](https://github.com/wittdennis/ansible-role-user/commit/9633550298884ccc9853395248ea9633aeb2a0df)) - wittdennis-renovate[bot]
+- (**deps**) update pre-commit hook ansible-community/ansible-lint to v26.1.1 - ([31876a1](https://github.com/wittdennis/ansible-role-user/commit/31876a1534e30107005141019aeb919b63328de6)) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.13.4 - ([7a3dae3](https://github.com/wittdennis/ansible-role-user/commit/7a3dae38ca41a0ded5c3e6c63cf5797d199e7dca)) - wittdennis-renovate[bot]
+- (**deps**) update pre-commit hook ansible-community/ansible-lint to v26 - ([0d708ac](https://github.com/wittdennis/ansible-role-user/commit/0d708acabb003161983b62b747dc3c646b4dc03a)) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.13.3 - ([3a1dd18](https://github.com/wittdennis/ansible-role-user/commit/3a1dd18a4be349eb8d311997944aeb5d03d85918)) - wittdennis-renovate[bot]
+- (**deps**) update pre-commit hook ansible-community/ansible-lint to v25.12.2 - ([a466c71](https://github.com/wittdennis/ansible-role-user/commit/a466c71eb4af81d6447f1d120e749503d2803292)) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.13.2 - ([3794812](https://github.com/wittdennis/ansible-role-user/commit/379481235e51b01b11341ca41a215796beb4a81a)) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.13.1 - ([c2bfb4b](https://github.com/wittdennis/ansible-role-user/commit/c2bfb4b0bb43bd3cf1eb0bd4a9fdd2df2b459358)) - wittdennis-renovate[bot]
+- (**deps**) update pre-commit hook ansible-community/ansible-lint to v25.12.1 - ([93cb0ba](https://github.com/wittdennis/ansible-role-user/commit/93cb0ba28b451009d881c370daaf90e28acbf920)) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.13.0 - ([e2fe957](https://github.com/wittdennis/ansible-role-user/commit/e2fe957f6af0eee206d7dffe1b4357cf60b493c2)) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.12.11 - ([9105e41](https://github.com/wittdennis/ansible-role-user/commit/9105e41172549a2c54df02baabbff1b0408fa8ec)) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.12.10 - ([a31c238](https://github.com/wittdennis/ansible-role-user/commit/a31c238fb363335507a264e259c5d3498281d61b)) - wittdennis-renovate[bot]
+- (**deps**) update pre-commit hook ansible-community/ansible-lint to v25.12.0 - ([df8ba45](https://github.com/wittdennis/ansible-role-user/commit/df8ba45e1288a65c08219776f1fb077faf27962e)) - wittdennis-renovate[bot]
+- (**deps**) update pre-commit hook ansible-community/ansible-lint to v25.11.1 - ([3ac272f](https://github.com/wittdennis/ansible-role-user/commit/3ac272f0b063e781d0b34a61d708162880caf100)) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.12.9 - ([e4c5016](https://github.com/wittdennis/ansible-role-user/commit/e4c501611a00fd59c5f76edfcfaad39fdbb4d87b)) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.12.8 - ([9e5fb20](https://github.com/wittdennis/ansible-role-user/commit/9e5fb2008c9b8204b4cde4d1e93627d4b05bd92c)) - wittdennis-renovate[bot]
+
+- - -
+
 ## [2.3.0](https://github.com/wittdennis/ansible-role-user/compare/c56ed6b4e92de3dca6b2c936b408170568a24241..2.3.0) - 2025-11-15
 #### Features
 - ensure that sudo is present on system - ([c56ed6b](https://github.com/wittdennis/ansible-role-user/commit/c56ed6b4e92de3dca6b2c936b408170568a24241)) - Dennis Witt
