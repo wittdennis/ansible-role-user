@@ -26,6 +26,12 @@
       - user_public_key_file != None
     fail_msg: "user_public_key_file needs to be set in order for this role to work"
 
+- name: Add group
+  ansible.builtin.group:
+    name: "{{ user_login }}"
+    state: present
+    system: "{{ not user_human }}"
+
 - name: Add user (human)
   when: user_human
   ansible.builtin.user:
@@ -36,6 +42,7 @@
     create_home: true
     state: present
     shell: "{{ user_shell }}"
+    group: "{{ user_login }}"
 
 - name: Add authorized_key
   when: user_human
@@ -52,6 +59,7 @@
     create_home: true
     state: present
     system: true
+    group: "{{ user_login }}"
 
 - name: Ensure sudo is present
   when: user_allow_sudo_superuser | bool and ansible_facts['distribution'] != 'Alpine'
