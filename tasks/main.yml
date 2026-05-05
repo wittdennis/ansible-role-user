@@ -43,6 +43,7 @@
     state: present
     shell: "{{ user_shell }}"
     group: "{{ user_login }}"
+    groups: "{{ user_additional_groups }}"
 
 - name: Add authorized_key
   when: user_human
@@ -60,6 +61,7 @@
     state: present
     system: true
     group: "{{ user_login }}"
+    groups: "{{ user_additional_groups }}"
 
 - name: Ensure sudo is present
   when: user_allow_sudo_superuser | bool and ansible_facts['distribution'] != 'Alpine'
