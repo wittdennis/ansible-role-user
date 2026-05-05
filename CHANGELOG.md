@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [2.5.1](https://github.com/wittdennis/ansible-role-user/compare/58b95a1376c2869fd987191856e39dfb14734204..2.5.1) - 2026-05-05
+#### Bug Fixes
+- automatically add wheel group to additional_groups on alpine when user is allowed sudo rights - ([0899246](https://github.com/wittdennis/ansible-role-user/commit/08992463ca5555b4411d385468e3431f38eea777)) - Dennis Witt
+#### Documentation
+- quote default value for user_additional_groups - ([58b95a1](https://github.com/wittdennis/ansible-role-user/commit/58b95a1376c2869fd987191856e39dfb14734204)) - Dennis Witt
+
+- - -
+
 ## [2.5.0](https://github.com/wittdennis/ansible-role-user/compare/c9e4f1803418685c4a26aa0f1bdbb950f24bc8d8..2.5.0) - 2026-05-05
 #### Features
 - add user_additional_groups to assign additional groups to the user - ([79e226d](https://github.com/wittdennis/ansible-role-user/commit/79e226deedcd21725a6a172bd73ff0c0b51c163d)) - Dennis Witt
