@@ -16,7 +16,7 @@ None.
 | user_sudo_superuser    | User ability to sudo as the superuser                                                                                                                                                                    |           | `false`       |
 | user_shell             | Default shell of the user                                                                                                                                                                                |           | `"/bin/bash"` |
 | user_comment           | Comment for the user                                                                                                                                                                                     |           | `""`          |
-| user_additional_groups | List of additional groups the user should be added to                                                                                                                                                    |           | []            |
+| user_additional_groups | List of additional groups the user should be added to                                                                                                                                                    |           | `[]`          |
 
 ## Dependencies
 
