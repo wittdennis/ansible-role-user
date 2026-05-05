@@ -1,0 +1,25 @@
+---
+extends: default
+ignore:
+  - .github
+  - .ansible
+  - .pre-commit-config.yaml
+rules:
+  line-length:
+    max: 240
+    level: warning
+  comments:
+    min-spaces-from-content: 1
+  comments-indentation:
+    level: error
+  braces:
+    max-spaces-inside: 1
+    max-spaces-inside-empty: 0
+  brackets:
+    max-spaces-inside: 1
+    min-spaces-inside: 0
+    max-spaces-inside-empty: -1
+    min-spaces-inside-empty: -1
+  octal-values:
+    forbid-explicit-octal: true
+    forbid-implicit-octal: true
