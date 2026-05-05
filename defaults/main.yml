@@ -3,3 +3,4 @@ user_shell: "/bin/bash"
 user_allow_sudo_superuser: false
 user_comment: ""
 user_human: true
+user_additional_groups: []
