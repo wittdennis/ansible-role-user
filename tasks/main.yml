@@ -31,6 +31,7 @@
     __additional_groups: "{{ user_additional_groups + ['wheel'] if ansible_facts['distribution'] == 'Alpine' and user_allow_sudo_superuser | bool else user_additional_groups }}"
 
 - name: Add group
+  become: true
   ansible.builtin.group:
     name: "{{ user_login }}"
     state: present
@@ -38,6 +39,7 @@
 
 - name: Add user (human)
   when: user_human
+  become: true
   ansible.builtin.user:
     name: "{{ user_login }}"
     comment: "{{ user_comment }}"
@@ -51,6 +53,7 @@
 
 - name: Add authorized_key
   when: user_human
+  become: true
   ansible.posix.authorized_key:
     key: "{{ lookup('file', user_public_key_file) }}"
     user: "{{ user_login }}"
@@ -58,6 +61,7 @@
 
 - name: Add user (system)
   when: not user_human
+  become: true
   ansible.builtin.user:
     name: "{{ user_login }}"
     comment: "{{ user_comment }}"
@@ -69,11 +73,13 @@
 
 - name: Ensure sudo is present
   when: user_allow_sudo_superuser | bool and ansible_facts['distribution'] != 'Alpine'
+  become: true
   ansible.builtin.package:
     name: sudo
     state: present
 
 - name: Grant sudo superuser rights
+  become: true
   community.general.sudoers:
     name: "{{ user_login }}-superuser"
     user: "{{ user_login }}"
@@ -83,12 +89,14 @@
   when: user_allow_sudo_superuser | bool and ansible_facts['distribution'] != 'Alpine'
 
 - name: Ensure doas is present on alpine
+  become: true
   ansible.builtin.package:
     name: doas
     state: present
   when: user_allow_sudo_superuser | bool and ansible_facts['distribution'] == 'Alpine'
 
 - name: Permit wheel group to use doas
+  become: true
   ansible.builtin.lineinfile:
     line: permit persist :wheel
     regexp: "^permit persist :wheel"
