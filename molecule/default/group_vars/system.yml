@@ -1,0 +1,5 @@
+# code: language=ansible
+---
+user_login: molecule_system
+user_human: false
+user_comment: "Molecule test system user"

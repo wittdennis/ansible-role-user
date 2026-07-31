@@ -1,0 +1,8 @@
+# code: language=ansible
+---
+collections:
+  - name: ansible.posix
+  - name: community.general
+  - name: containers.podman
+    version: ">=1.8.1"
+  - name: community.crypto

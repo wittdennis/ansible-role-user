@@ -1,0 +1,18 @@
+name: pr
+
+on:
+  pull_request:
+
+jobs:
+  check-commits:
+    uses: wittdennis/pipelines/.github/workflows/cog-validate.yaml@0d6d7ea86ee5a77cd1493ef7cae0a749787ce637 # 2.0.41
+    with:
+      check-latest-tag-only: true
+
+  ansible-lint:
+    uses: wittdennis/pipelines/.github/workflows/ansible-lint.yaml@0d6d7ea86ee5a77cd1493ef7cae0a749787ce637 # 2.0.41
+    with:
+      requirements-file: requirements.yml
+
+  ansible-test:
+    uses: wittdennis/pipelines/.github/workflows/ansible-test.yaml@0d6d7ea86ee5a77cd1493ef7cae0a749787ce637 # 2.0.41

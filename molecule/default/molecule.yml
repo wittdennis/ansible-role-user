@@ -1,0 +1,34 @@
+# code: language=ansible
+---
+driver:
+  name: podman
+platforms:
+  - name: user-human-debian
+    image: docker.io/geerlingguy/docker-debian12-ansible:latest
+    pre_build_image: true
+    command: "tail -f /dev/null"
+    groups:
+      - non_alpine
+      - human
+  - name: user-human-alpine
+    image: docker.io/library/alpine:3.24.1 # renovate
+    pre_build_image: true
+    command: "tail -f /dev/null"
+    groups:
+      - alpine
+      - human
+  - name: user-system-debian
+    image: docker.io/geerlingguy/docker-debian12-ansible:latest
+    pre_build_image: true
+    command: "tail -f /dev/null"
+    groups:
+      - non_alpine
+      - system
+provisioner:
+  name: ansible
+  playbooks:
+    prepare: prepare.yml
+    converge: converge.yml
+    verify: verify.yml
+verifier:
+  name: ansible

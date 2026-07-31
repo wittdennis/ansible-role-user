@@ -3,7 +3,7 @@ disable_bump_commit = false
 disable_changelog = false
 from_latest_tag = false
 generate_mono_repository_global_tag = true
-ignore_merge_commits = false
+ignore_merge_commits = true
 post_bump_hooks = [
   "git push",
   "git push origin {{version}}",

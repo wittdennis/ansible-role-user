@@ -1,0 +1,8 @@
+# code: language=ansible
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: Include wittdennis.user role
+      ansible.builtin.include_role:
+        name: wittdennis.user

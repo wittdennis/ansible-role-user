@@ -1,0 +1,4 @@
+# code: language=ansible
+---
+user_public_key_file: "{{ molecule_ephemeral_directory }}/id_ed25519.pub"
+user_shell: "/bin/bash"
