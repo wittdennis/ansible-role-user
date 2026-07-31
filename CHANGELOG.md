@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [2.5.3](https://github.com/wittdennis/ansible-role-user/compare/9cfee89971d4243e65f7e105ea99ea15ffe80b7f..2.5.3) - 2026-07-31
+#### Bug Fixes
+- grant runas rights when set to superuser - ([9cfee89](https://github.com/wittdennis/ansible-role-user/commit/9cfee89971d4243e65f7e105ea99ea15ffe80b7f)) - Dennis Witt
+#### Tests
+- add molecule tests - ([242d37f](https://github.com/wittdennis/ansible-role-user/commit/242d37fb8c836e5e027219b1e74d74389d508709)) - Dennis Witt
+
+- - -
+
 ## [2.5.2](https://github.com/wittdennis/ansible-role-user/compare/787528aa042f7a1e02f0c5665e6852ddc542d3b0..2.5.2) - 2026-07-30
 #### Bug Fixes
 - add become for tasks that need it - ([2ae0772](https://github.com/wittdennis/ansible-role-user/commit/2ae077231d8101be2025e0de80ec58e336f98958)) - Dennis Witt
