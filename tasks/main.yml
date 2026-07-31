@@ -85,6 +85,7 @@
     user: "{{ user_login }}"
     state: present
     commands: ALL
+    runas: ALL
     nopassword: false
   when: user_allow_sudo_superuser | bool and ansible_facts['distribution'] != 'Alpine'
 
