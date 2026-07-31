@@ -1,0 +1,106 @@
+# code: language=ansible
+---
+- name: Verify
+  hosts: all
+  become: true
+  tasks:
+    - name: Gather passwd entry
+      ansible.builtin.getent:
+        database: passwd
+        key: "{{ user_login }}"
+
+    - name: Gather group entry
+      ansible.builtin.getent:
+        database: group
+        key: "{{ user_login }}"
+
+    - name: Assert user and group exist
+      ansible.builtin.assert:
+        that:
+          - getent_passwd[user_login] is defined
+          - getent_group[user_login] is defined
+        fail_msg: "Expected user and group {{ user_login }} to exist"
+
+    - name: Assert shell matches role default for human users
+      when: user_human
+      ansible.builtin.assert:
+        that:
+          - getent_passwd[user_login][5] == user_shell
+        fail_msg: "Unexpected login shell for {{ user_login }}"
+
+    - name: Check home directory
+      ansible.builtin.stat:
+        path: "{{ getent_passwd[user_login][4] }}"
+      register: __home_dir
+
+    - name: Assert home directory was created
+      ansible.builtin.assert:
+        that:
+          - __home_dir.stat.exists
+          - __home_dir.stat.isdir
+        fail_msg: "Expected home directory {{ getent_passwd[user_login][4] }} to exist"
+
+    - name: Check shadow entry
+      when: user_human
+      ansible.builtin.command: getent shadow {{ user_login }}
+      register: __shadow_entry
+      changed_when: false
+
+    - name: Assert password hash was applied
+      when: user_human
+      ansible.builtin.assert:
+        that:
+          - user_password_hash in __shadow_entry.stdout
+        fail_msg: "Password hash for {{ user_login }} does not match"
+
+    - name: Check authorized_keys file
+      when: user_human
+      ansible.builtin.command: cat {{ getent_passwd[user_login][4] }}/.ssh/authorized_keys
+      register: __authorized_keys
+      changed_when: false
+
+    - name: Assert public key was installed
+      when: user_human
+      ansible.builtin.assert:
+        that:
+          - lookup('file', molecule_ephemeral_directory ~ '/id_ed25519.pub') in __authorized_keys.stdout
+        fail_msg: "Expected public key was not found in authorized_keys for {{ user_login }}"
+
+    - name: Check sudoers file (non-Alpine)
+      when: ansible_facts['distribution'] != 'Alpine'
+      ansible.builtin.stat:
+        path: /etc/sudoers.d/{{ user_login }}-superuser
+      register: __sudoers_file
+
+    - name: Assert sudoers file presence matches expected state
+      when: ansible_facts['distribution'] != 'Alpine'
+      ansible.builtin.assert:
+        that:
+          - __sudoers_file.stat.exists == (user_allow_sudo_superuser | default(false))
+        fail_msg: "Sudoers file presence for {{ user_login }} did not match the expected state"
+
+    - name: Check doas config (Alpine)
+      when: user_allow_sudo_superuser | default(false) and ansible_facts['distribution'] == 'Alpine'
+      ansible.builtin.command: cat /etc/doas.conf
+      register: __doas_conf
+      changed_when: false
+
+    - name: Assert doas permits the wheel group
+      when: user_allow_sudo_superuser | default(false) and ansible_facts['distribution'] == 'Alpine'
+      ansible.builtin.assert:
+        that:
+          - "'permit persist :wheel' in __doas_conf.stdout"
+        fail_msg: "doas is not configured to permit the wheel group"
+
+    - name: Check group membership
+      when: user_allow_sudo_superuser | default(false) and ansible_facts['distribution'] == 'Alpine'
+      ansible.builtin.command: id -nG {{ user_login }}
+      register: __groups_out
+      changed_when: false
+
+    - name: Assert user is a member of the wheel group
+      when: user_allow_sudo_superuser | default(false) and ansible_facts['distribution'] == 'Alpine'
+      ansible.builtin.assert:
+        that:
+          - "'wheel' in __groups_out.stdout.split()"
+        fail_msg: "Expected {{ user_login }} to be a member of the wheel group"

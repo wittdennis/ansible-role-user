@@ -1,0 +1,7 @@
+# code: language=ansible
+---
+user_login: molecule_human
+user_human: true
+user_comment: "Molecule test user"
+user_password_hash: "$6$moleculesalt$8W0kx0y0N7CQeaOAM2FQnU1o8VwYQeRZ8kR1FQoOZ6TmWiKq1Y5o0m0N9c8f8oQeM1kQeXWJZ6O6nA5t8b6C0."
+user_allow_sudo_superuser: true
