@@ -11,7 +11,7 @@ platforms:
       - non_alpine
       - human
   - name: user-human-alpine
-    image: docker.io/library/alpine:3.24.1 # renovate
+    image: docker.io/library/alpine:3.24.2 # renovate
     pre_build_image: true
     command: "tail -f /dev/null"
     groups:
